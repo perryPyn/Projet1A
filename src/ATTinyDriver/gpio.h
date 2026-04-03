@@ -47,9 +47,6 @@ extern "C" {
 void PIN_Configure(void);
 void PIN_Driver(volatile uint8_t *port, uint8_t pin, uint8_t state);
 
-void Timer_Init(void);
-ISR(TIMER0_COMPA_vect);
-
 #ifdef __cplusplus
 }
 #endif

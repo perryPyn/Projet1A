@@ -10,34 +10,16 @@ PORTB : DISPLAY(0,1,2), RESET(3)
 */
 
 int numberToDisplay = 8;
-int digit_0, digit_1, digit_2;
+int digit_unites, digit_dizaines, digit_centaines;
 
 void setup() {
   PIN_Configure();
 
-  // PIN_Driver(&PORTA, CENTIEME, 1); // Ligne de test
-
-  Timer_Init();
-
-  sei(); // Autoriser les interruptions globales
+  //PIN_Driver(&PORTA, CENTIEME_PIN, 1); // Ligne de test
 }
 
-void loop() {
-  // FormatNumber(numberToDisplay, &digit_0, &digit_1, &digit_2);
-  // DrawNumber(digit_0, digit_1, digit_2);
+void loop() { // Servira déjà à tester que les afficheurs fonctionnent, j'ai commencé à les intégrer avec les interruptions des timers. 
+  FormatNumber(numberToDisplay, &digit_unites, &digit_dizaines, &digit_centaines);
 
-  // for(int i=0; i<10; i++)
-  // {
-  //   NumberToDisplay(i);
-  //   delay(1000);
-  // }
-
-  // for(int i=0; i<3; i++)
-  // {
-  //   DisplayToUse(i);
-  //   delay(1000);
-  // }
-  // DisplayOff();
-  // delay(1000);
-
+  DrawNumber(digit_unites, digit_dizaines, digit_centaines);
 }
