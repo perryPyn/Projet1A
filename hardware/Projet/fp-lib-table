@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "n,")(type "KiCad")(uri "/home/lotre/.local/share/kicad/9.0/footprints/74xx")(options "")(descr ""))
+)
