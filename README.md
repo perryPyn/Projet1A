@@ -1,0 +1,1 @@
+Ce projet, réalisé dans le cadre du Semestre 6 à l'ENSEA (Année 2025-2026), consiste à développer un prototype de mesure de distance basé sur la technologie Time Of Flight (TOF). L'objectif est d'utiliser un capteur laser compact pour détecter des obstacles et commander une interface visuelle de retour.
