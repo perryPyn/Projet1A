@@ -2,8 +2,8 @@
 #include "display.h"
 #include <avr/interrupt.h>
 
-int numberToDisplay = 123;
-int digit_unites, digit_dizaines, digit_centaines;
+int volatile numberToDisplay = 456;
+uint8_t volatile digit_unites=3, digit_dizaines=2, digit_centaines=1;
 
 /* --- Configuration et Driver pour les pins --- */
 void PIN_Configure(void) {
@@ -32,16 +32,16 @@ void Timer_Init(void) {
   sei();  // Autoriser les interruptions globales
 }
 
-void setNumberToDisplay(int n) {
-  numberToDisplay = n;
+void setNumberToDisplay(int n){
+    numberToDisplay = n;
 }
 
 
 int i = 0;
 ISR(TIMER0_COMPA_vect) {  // Comparaison avec OCR0A
-  FormatNumber(numberToDisplay, &digit_unites, &digit_dizaines, &digit_centaines);
-
+  
   DisplayOff();
   DrawNumber(i, digit_unites, digit_dizaines, digit_centaines);
   i = (i + 1) % 3;
+
 }

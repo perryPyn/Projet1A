@@ -3,13 +3,13 @@
 #include "display.h"
 
 
-void FormatNumber(int numberToSplit, int* digit_unites, int* digit_dizaines, int* digit_centaines) {
+void FormatNumber(int numberToSplit,volatile uint8_t* digit_unites,volatile uint8_t* digit_dizaines,volatile uint8_t* digit_centaines) {
   *digit_unites = numberToSplit % 10;
   *digit_dizaines = (numberToSplit / 10) % 10;
   *digit_centaines = (numberToSplit / 100) % 10;
 }
 
-void DrawNumber(int display, int digit_unites, int digit_dizaines, int digit_centaines) {
+void DrawNumber(uint8_t display, uint8_t digit_unites, uint8_t digit_dizaines, uint8_t digit_centaines) {
   switch (display) {
     case 0:
       DisplayToUse(DISPLAY_1);

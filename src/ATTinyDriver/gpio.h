@@ -38,10 +38,17 @@ Schéma de configuration des pins de l'ATTiny841 :
 #define DIXIEME  PA5
 #define CENTIEME PA7
 
+
+
 /* === Prototypage des fonctions === */
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+extern volatile int numberToDisplay;
+extern volatile uint8_t digit_unites;
+extern volatile uint8_t digit_dizaines;
+extern volatile uint8_t digit_centaines;
 
 void PIN_Configure(void);
 void PIN_Driver(volatile uint8_t *port, uint8_t pin, uint8_t state);

@@ -11,15 +11,14 @@ PORTB : DISPLAY(0,1,2), RESET(3)
 */
 
 void setup() {
+
   PIN_Configure();
-  Capteur_Configure();
+  // Capteur_Configure();
 
   Timer_Init();
-
-  // setNumberToDisplay(123);
-  // PIN_Driver(&PORTA, CENTIEME_PIN, 1); // Ligne de test
 }
 
 void loop() {
-  Capteur_Read();
+  FormatNumber(numberToDisplay, &digit_unites, &digit_dizaines, &digit_centaines);
+  // Capteur_Read();
 }
