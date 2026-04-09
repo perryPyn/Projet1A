@@ -9,9 +9,6 @@ PORTB : DISPLAY(0,1,2), RESET(3)
 
 */
 
-int numberToDisplay = 8;
-int digit_unites, digit_dizaines, digit_centaines;
-
 void setup() {
   PIN_Configure();
 

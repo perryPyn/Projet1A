@@ -29,14 +29,12 @@ void Timer_Init(void) {
     sei(); // Autoriser les interruptions globales
 }
 
-static uint8_t currentDisplay = 0;
-static uint8_t currentNumber = 8;
+int numberToDisplay = 123;
+int digit_unites=7, digit_dizaines=8, digit_centaines=9;
+
 ISR(TIMER0_COMPA_vect) { // Comparaison avec OCR0A
 
-    DisplayOff(); // PORTB &= 0xF8;
+    FormatNumber(numberToDisplay, &digit_unites, &digit_dizaines, &digit_centaines);
+    DrawNumber(digit_unites, digit_dizaines, digit_centaines);
 
-    DisplayToUse(currentDisplay);
-    NumberToDisplay(currentDisplay);
-
-    currentDisplay = (currentDisplay+1)%3;
 }

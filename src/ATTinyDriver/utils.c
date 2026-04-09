@@ -4,22 +4,22 @@
 
 
 void FormatNumber(int numberToSplit, int* digit_unites, int* digit_dizaines, int* digit_centaines) {
-    digit_unites    =  numberToSplit % 10;
-    digit_dizaines  = (numberToSplit / 10) % 10;
-    digit_centaines = (numberToSplit / 100) % 10;
+    *digit_unites    =  numberToSplit % 10;
+    *digit_dizaines  = (numberToSplit / 10) % 10;
+    *digit_centaines = (numberToSplit / 100) % 10;
 }
 
 void DrawNumber(int digit_unites, int digit_dizaines, int digit_centaines){
 
   DisplayToUse(DISPLAY_1);
   NumberToDisplay(digit_unites);
-  // DisplayOff();
+  DisplayOff();
   
   DisplayToUse(DISPLAY_2);
   NumberToDisplay(digit_dizaines);
-  // DisplayOff();
+  DisplayOff();
   
   DisplayToUse(DISPLAY_3);
   NumberToDisplay(digit_centaines);
-  // DisplayOff();
+  DisplayOff();
 }
