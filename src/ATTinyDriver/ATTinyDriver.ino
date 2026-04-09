@@ -17,8 +17,4 @@ void setup() {
   // PIN_Driver(&PORTA, CENTIEME_PIN, 1); // Ligne de test
 }
 
-void loop() {
-  // FormatNumber(numberToDisplay, &digit_unites, &digit_dizaines, &digit_centaines);
-
-  // DrawNumber(digit_unites, digit_dizaines, digit_centaines);
-}
+void loop() {}

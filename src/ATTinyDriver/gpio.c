@@ -30,11 +30,13 @@ void Timer_Init(void) {
 }
 
 int numberToDisplay = 123;
-int digit_unites=7, digit_dizaines=8, digit_centaines=9;
+int digit_unites, digit_dizaines, digit_centaines;
 
+int i=0;
 ISR(TIMER0_COMPA_vect) { // Comparaison avec OCR0A
-
     FormatNumber(numberToDisplay, &digit_unites, &digit_dizaines, &digit_centaines);
-    DrawNumber(digit_unites, digit_dizaines, digit_centaines);
-
+    
+    DisplayOff();
+    DrawNumber(i,digit_unites, digit_dizaines, digit_centaines);
+    i=(i+1)%3;
 }

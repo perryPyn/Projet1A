@@ -9,17 +9,21 @@ void FormatNumber(int numberToSplit, int* digit_unites, int* digit_dizaines, int
     *digit_centaines = (numberToSplit / 100) % 10;
 }
 
-void DrawNumber(int digit_unites, int digit_dizaines, int digit_centaines){
+void DrawNumber(int display, int digit_unites, int digit_dizaines, int digit_centaines){
+  switch (display) {
+    case 0:
+      DisplayToUse(DISPLAY_1);
+      NumberToDisplay(digit_unites);
+      break;
 
-  DisplayToUse(DISPLAY_1);
-  NumberToDisplay(digit_unites);
-  DisplayOff();
-  
-  DisplayToUse(DISPLAY_2);
-  NumberToDisplay(digit_dizaines);
-  DisplayOff();
-  
-  DisplayToUse(DISPLAY_3);
-  NumberToDisplay(digit_centaines);
-  DisplayOff();
+    case 1:
+      DisplayToUse(DISPLAY_2);
+      NumberToDisplay(digit_dizaines);
+      break;
+    
+    case 2:
+      DisplayToUse(DISPLAY_3);
+      NumberToDisplay(digit_centaines);
+      break;
+  }
 }
