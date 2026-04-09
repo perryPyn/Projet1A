@@ -15,11 +15,13 @@ int digit_unites, digit_dizaines, digit_centaines;
 void setup() {
   PIN_Configure();
 
-  //PIN_Driver(&PORTA, CENTIEME_PIN, 1); // Ligne de test
+  Timer_Init();
+
+  // PIN_Driver(&PORTA, CENTIEME_PIN, 1); // Ligne de test
 }
 
-void loop() { // Servira déjà à tester que les afficheurs fonctionnent, j'ai commencé à les intégrer avec les interruptions des timers. 
-  FormatNumber(numberToDisplay, &digit_unites, &digit_dizaines, &digit_centaines);
+void loop() {
+  // FormatNumber(numberToDisplay, &digit_unites, &digit_dizaines, &digit_centaines);
 
-  DrawNumber(digit_unites, digit_dizaines, digit_centaines);
+  // DrawNumber(digit_unites, digit_dizaines, digit_centaines);
 }

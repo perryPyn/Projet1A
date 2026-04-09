@@ -4,8 +4,8 @@
 
 /* --- Configuration et Driver pour les pins --- */
 void PIN_Configure(void) {
-    DDRB |= 00000111;
-    DDRA |= 10101111;
+    DDRB |= 0b00000111;
+    DDRA |= 0b10101111;
 }
 
 void PIN_Driver(volatile uint8_t *port, uint8_t pin, uint8_t state) {
@@ -30,13 +30,13 @@ void Timer_Init(void) {
 }
 
 static uint8_t currentDisplay = 0;
-static uint8_t currentNumber = 0;
+static uint8_t currentNumber = 8;
 ISR(TIMER0_COMPA_vect) { // Comparaison avec OCR0A
 
     DisplayOff(); // PORTB &= 0xF8;
 
     DisplayToUse(currentDisplay);
-    NumberToDisplay(currentNumber);
+    NumberToDisplay(currentDisplay);
 
-    currentDisplay = (currentDisplay+1)%2;
+    currentDisplay = (currentDisplay+1)%3;
 }
