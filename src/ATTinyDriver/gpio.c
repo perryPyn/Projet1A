@@ -2,6 +2,9 @@
 #include "display.h"
 #include <avr/interrupt.h>
 
+int numberToDisplay = 123;
+int digit_unites, digit_dizaines, digit_centaines;
+
 /* --- Configuration et Driver pour les pins --- */
 void PIN_Configure(void) {
     DDRB |= 0b00000111;
@@ -29,8 +32,10 @@ void Timer_Init(void) {
     sei(); // Autoriser les interruptions globales
 }
 
-int numberToDisplay = 123;
-int digit_unites, digit_dizaines, digit_centaines;
+void setNumberToDisplay(int n){
+    numberToDisplay = n;
+}
+
 
 int i=0;
 ISR(TIMER0_COMPA_vect) { // Comparaison avec OCR0A
