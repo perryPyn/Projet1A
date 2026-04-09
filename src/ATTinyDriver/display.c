@@ -14,7 +14,7 @@ void DisplayToUse(uint8_t display) {
   PORTB = (PORTB & 0xF8) | (1 << display);
 }
 
-void DisplayOff(){
+void DisplayOff() {
   /*
     *  Permet d'éteindre tout les afficheur en cas de mauvaise synchronisation
   */

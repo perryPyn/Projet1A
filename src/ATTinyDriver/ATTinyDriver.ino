@@ -16,6 +16,7 @@ void setup() {
 
   Timer_Init();
 
+  // setNumberToDisplay(123);
   // PIN_Driver(&PORTA, CENTIEME_PIN, 1); // Ligne de test
 }
 
