@@ -29,9 +29,9 @@ void Capteur_Configure(void) {
     return;
   }
 
-  sensor.setDistanceMode(VL53L1X::Long);
+  sensor.setDistanceMode(VL53L1X::Short);
   sensor.setMeasurementTimingBudget(100000);  // 100ms
-  sensor.startContinuous(150);
+  sensor.startContinuous(200);
 }
 
 
