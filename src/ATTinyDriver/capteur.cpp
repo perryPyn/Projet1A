@@ -11,6 +11,7 @@ code erreur : signification
         704 : cible trop loin
         707 : cible trouvée mais pas de phase correspondante
         70n : cf doc
+        999 : bloquage de la liason
         
 */
 
@@ -34,19 +35,24 @@ void Capteur_Configure(void) {
 }
 
 void Capteur_Read(void) {
+  if (sensor.timeoutOccurred()) {
+      setNumberToDisplay(999); // Il y a eu un timeout sur la liaison
+      sensor.startContinuous(150); // On force le redémarrage
+      return;
+  }
 
   if (!sensor.dataReady()) {  // Data pas prêt
     // setNumberToDisplay(666);
     return;
   }
 
+  uint16_t distance = sensor.read();
   uint8_t status = sensor.ranging_data.range_status;
   if (status != 0) { // Erreur dans la lecture
-    setNumberToDisplay(770+status);
+    setNumberToDisplay(700+status);
     return;
   }
 
-  uint16_t distance = sensor.read();
   if (distance > 999) distance = 999; // Distance tronquée le temps d'ajouter les décimales
   setNumberToDisplay((int)distance);
 }

@@ -10,19 +10,23 @@ PORTB : DISPLAY(0,1,2), RESET(3)
 
 */
 
+
+
 void setup() {
 
   PIN_Configure();
   
   Capteur_Configure();
   
+  Timer_Configure();
 
-  Timer_Init();
 }
 
+
+
 void loop() {
+
   Capteur_Read();
   FormatNumber(numberToDisplay, &digit_unites, &digit_dizaines, &digit_centaines);
-
-  delay(10);
+  // delay(10)
 }

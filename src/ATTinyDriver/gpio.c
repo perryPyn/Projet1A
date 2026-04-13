@@ -20,7 +20,7 @@ void PIN_Driver(volatile uint8_t *port, uint8_t pin, uint8_t state) {
 }
 
 /* --- Configuration du Timer et des interruptions --- */
-void Timer_Init(void) {
+void Timer_Configure(void) {
   TCCR0A = (1 << WGM01);  // Mode CTC
 
   TCCR0B = (1 << CS02);  // Prescaler 256

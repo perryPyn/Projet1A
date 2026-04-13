@@ -53,7 +53,7 @@ extern volatile uint8_t digit_centaines;
 void PIN_Configure(void);
 void PIN_Driver(volatile uint8_t *port, uint8_t pin, uint8_t state);
 
-void Timer_Init(void);
+void Timer_Configure(void);
 
 void setNumberToDisplay(int n);
 
