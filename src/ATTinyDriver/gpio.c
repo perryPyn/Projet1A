@@ -3,7 +3,7 @@
 #include <avr/interrupt.h>
 
 int volatile numberToDisplay = 111;
-uint8_t volatile digit_unites=0, digit_dizaines=0, digit_centaines=0;
+uint8_t volatile digit_1=0, digit_2=0, digit_3=0;
 
 /* --- Configuration et Driver pour les pins --- */
 void PIN_Configure(void) {
@@ -41,7 +41,7 @@ int i = 0;
 ISR(TIMER0_COMPA_vect) {  // Comparaison avec OCR0A
   
   DisplayOff();
-  DrawNumber(i, digit_unites, digit_dizaines, digit_centaines);
+  DrawNumber(i, digit_1, digit_2, digit_3);
   i = (i + 1) % 3;
 
 }

@@ -46,9 +46,9 @@ extern "C" {
 #endif
 
 extern volatile int numberToDisplay;
-extern volatile uint8_t digit_unites;
-extern volatile uint8_t digit_dizaines;
-extern volatile uint8_t digit_centaines;
+extern volatile uint8_t digit_1;
+extern volatile uint8_t digit_2;
+extern volatile uint8_t digit_3;
 
 void PIN_Configure(void);
 void PIN_Driver(volatile uint8_t *port, uint8_t pin, uint8_t state);

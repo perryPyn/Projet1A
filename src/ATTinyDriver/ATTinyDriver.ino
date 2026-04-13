@@ -27,6 +27,6 @@ void setup() {
 void loop() {
 
   Capteur_Read();
-  FormatNumber(numberToDisplay, &digit_unites, &digit_dizaines, &digit_centaines);
+  FormatNumber(numberToDisplay, &digit_1, &digit_2, &digit_3);
   // delay(10)
 }
