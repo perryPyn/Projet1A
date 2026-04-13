@@ -49,7 +49,7 @@ void Capteur_Read(void) {
   errorCounter = 0;
 
   if (sensor.timeoutOccurred()) {
-    setNumberToDisplay(999);      // Il y a eu un timeout sur la liaison
+    setNumberToDisplay(999);      // Timeout sur la liaison
     sensor.startContinuous(150);  // On force le redémarrage
     return;
   }
