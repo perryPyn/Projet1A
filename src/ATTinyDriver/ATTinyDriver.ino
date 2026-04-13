@@ -1,6 +1,7 @@
 #include "utils.h"
 #include "gpio.h"
 #include "display.h"
+#include "capteur.h"
 
 /*
 
@@ -9,12 +10,23 @@ PORTB : DISPLAY(0,1,2), RESET(3)
 
 */
 
+
+
 void setup() {
+
   PIN_Configure();
+  
+  Capteur_Configure();
+  
+  Timer_Configure();
 
-  Timer_Init();
-
-  // PIN_Driver(&PORTA, CENTIEME_PIN, 1); // Ligne de test
 }
 
-void loop() {}
+
+
+void loop() {
+
+  Capteur_Read();
+  FormatNumber(numberToDisplay, &digit_unites, &digit_dizaines, &digit_centaines);
+  // delay(10)
+}

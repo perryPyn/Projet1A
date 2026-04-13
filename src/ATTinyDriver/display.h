@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 
-void NumberToDisplay(int numberToDisplay);
+void NumberToDisplay(uint8_t numberToDisplay);
 void DisplayToUse(uint8_t display);
 void DisplayOff();
 
