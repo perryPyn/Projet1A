@@ -8,11 +8,11 @@ code erreur : signification
         555 : capteur pas prêt
         666 : data pas prêt
         702 : signal trop faible
+        703 : ciblre trop proche (7cm)
         704 : cible trop loin
         707 : cible trouvée mais pas de phase correspondante
         70n : cf doc
-        999 : bloquage de la liason
-        
+        999 : bloquage de la liason I2C
 */
 
 
@@ -34,11 +34,24 @@ void Capteur_Configure(void) {
   sensor.startContinuous(150);
 }
 
+
+uint8_t errorCounter = 0;
 void Capteur_Read(void) {
+  if (!sensor.dataReady()) {  // Watchdog
+    errorCounter++;
+    if (errorCounter > 200) {
+      sensor.stopContinuous();
+      sensor.startContinuous(150);
+      errorCounter = 0;
+    }
+    return;
+  }
+  errorCounter = 0;
+
   if (sensor.timeoutOccurred()) {
-      setNumberToDisplay(999); // Il y a eu un timeout sur la liaison
-      sensor.startContinuous(150); // On force le redémarrage
-      return;
+    setNumberToDisplay(999);      // Il y a eu un timeout sur la liaison
+    sensor.startContinuous(150);  // On force le redémarrage
+    return;
   }
 
   if (!sensor.dataReady()) {  // Data pas prêt
@@ -48,37 +61,11 @@ void Capteur_Read(void) {
 
   uint16_t distance = sensor.read();
   uint8_t status = sensor.ranging_data.range_status;
-  if (status != 0) { // Erreur dans la lecture
-    setNumberToDisplay(700+status);
+  if (status != 0) {  // Erreur dans la lecture
+    setNumberToDisplay(700 + status);
     return;
   }
 
-  if (distance > 999) distance = 999; // Distance tronquée le temps d'ajouter les décimales
+  if (distance > 999) distance = 999;  // Distance tronquée le temps d'ajouter les décimales
   setNumberToDisplay((int)distance);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
