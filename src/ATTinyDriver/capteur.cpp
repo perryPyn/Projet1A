@@ -1,28 +1,38 @@
 #include <Wire.h>
+#include <VL53L1X.h>
 #include "capteur.h"
 #include "gpio.h"
 
-#define VL53L1X_ADDRESS 0x29 // Attention l'adresse est 0x52 en format 8-bits mais Wire prend du 7-bits. (0x52>>1)
+VL53L1X sensor;
 
-extern "C" {
 
-  void Capteur_Configure(void) {
-    Wire.begin();
+void Capteur_Configure(void) {
+  Wire.begin();
+  Wire.setClock(100000);
+
+  sensor.setTimeout(500);
+  if (!sensor.init()) {
+    setNumberToDisplay(888);
+    return;
   }
+  sensor.setDistanceMode(VL53L1X::Long);
+  sensor.setMeasurementTimingBudget(100000);  // 100ms
+  sensor.startContinuous(150);
+}
 
-  void Capteur_Read(void) {
-    Wire.beginTransmission(VL53L1X_ADDRESS);
-
-    Wire.write(0x00);
-    uint8_t status = Wire.endTransmission();
+void Capteur_Read(void) {
+  if (sensor.dataReady()) {
+    uint16_t distance = sensor.read();
+    uint8_t status = sensor.ranging_data.range_status;
 
     if (status == 0) {
-      Wire.requestFrom(0x52, 1);
-      if (Wire.available()) {
-        setNumberToDisplay(Wire.read());
-      }
-    } else {
-      setNumberToDisplay(880+status);
+      if (distance > 999) distance = 999;
+      setNumberToDisplay((int)distance);
+    }
+
+    // Signal est trop faible (status 2) ou trop loin (status 4)
+    else if (status == 2 || status == 4) {
+      setNumberToDisplay(999);  // On affiche le max
     }
   }
 }

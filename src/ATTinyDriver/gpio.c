@@ -2,8 +2,8 @@
 #include "display.h"
 #include <avr/interrupt.h>
 
-int volatile numberToDisplay = 456;
-uint8_t volatile digit_unites=3, digit_dizaines=2, digit_centaines=1;
+int volatile numberToDisplay = 111;
+uint8_t volatile digit_unites=0, digit_dizaines=0, digit_centaines=0;
 
 /* --- Configuration et Driver pour les pins --- */
 void PIN_Configure(void) {
@@ -23,9 +23,9 @@ void PIN_Driver(volatile uint8_t *port, uint8_t pin, uint8_t state) {
 void Timer_Init(void) {
   TCCR0A = (1 << WGM01);  // Mode CTC
 
-  TCCR0B = (1 << CS01) | (1 << CS00);  // Prescaler 64 (Horloge système / 64)
+  TCCR0B = (1 << CS02);  // Prescaler 256
 
-  OCR0A = 249;  // = (Temps * f_CPU) / (Prescaler - 1)
+  OCR0A = 255;  // = (Temps * f_CPU) / (Prescaler - 1)
 
   TIMSK0 |= (1 << OCIE0A);  // Activer l'interruption de comparaison A
 
