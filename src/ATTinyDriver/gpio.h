@@ -13,7 +13,7 @@ Schéma de configuration des pins de l'ATTiny841 :
      (DISPLAY_2)  PB1  3|             |12  PA1  (BIT_1)
          (RESET)  PB3  4|             |11  PA2  (BIT_2)
      (DISPLAY_3)  PB2  5|             |10  PA3  (BIT_3)
-        (X_SHUT)  PA7  6|             |9   PA4  (I2C_SCL)
+              ()  PA7  6|             |9   PA4  (I2C_SCL)
        (I2C_SDA)  PA6  7|             |8   PA5  (DECIMAL)
                         +-------------+
 
