@@ -2,6 +2,8 @@
 #define GPIO_H
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
+#include "display.h"
 
 /*
 Schéma de configuration des pins de l'ATTiny841 :

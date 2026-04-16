@@ -1,7 +1,4 @@
 #include "utils.h"
-#include "gpio.h"
-#include "display.h"
-
 
 void FormatNumber(uint16_t numberToSplit, volatile uint8_t* digit_1, volatile uint8_t* digit_2, volatile uint8_t* digit_3) {
   if (numberToSplit < 10) {

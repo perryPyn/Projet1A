@@ -1,7 +1,4 @@
-#include <Wire.h>
-#include <VL53L1X.h>
 #include "capteur.h"
-#include "gpio.h"
 
 /*
 code erreur : signification

@@ -1,7 +1,10 @@
 #ifndef CAPTEUR_H
 #define CAPTEUR_H
 
-#include <stdint.h>
+// #include <stdint.h>
+#include <Wire.h>
+#include <VL53L1X.h>
+#include "gpio.h"
 
 #ifdef __cplusplus
 extern "C" {

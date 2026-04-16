@@ -1,7 +1,9 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include <avr/io.h> 
+// #include <avr/io.h>
+#include "gpio.h"
+#include "display.h"
 
 
 #ifdef __cplusplus

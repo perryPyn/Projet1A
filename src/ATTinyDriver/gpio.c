@@ -1,6 +1,4 @@
 #include "gpio.h"
-#include "display.h"
-#include <avr/interrupt.h>
 
 uint16_t volatile numberToDisplay = 111;
 uint8_t  volatile decimalPoint = 3;

@@ -1,6 +1,6 @@
-#include "utils.h"
+// #include "display.h"
 #include "gpio.h"
-#include "display.h"
+#include "utils.h"
 #include "capteur.h"
 
 /*
@@ -15,11 +15,10 @@ PORTB : DISPLAY(0,1,2), RESET(3)
 void setup() {
 
   PIN_Configure();
-  
-  Capteur_Configure();
-  
-  Timer_Configure();
 
+  Capteur_Configure();
+
+  Timer_Configure();
 }
 
 
@@ -28,5 +27,4 @@ void loop() {
 
   Capteur_Read();
   FormatNumber(numberToDisplay, &digit_1, &digit_2, &digit_3);
-  // delay(10)
 }
