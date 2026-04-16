@@ -45,7 +45,8 @@ Schéma de configuration des pins de l'ATTiny841 :
 extern "C" {
 #endif
 
-extern volatile int numberToDisplay;
+extern volatile uint16_t numberToDisplay;
+extern volatile uint8_t decimalPoint;
 extern volatile uint8_t digit_1;
 extern volatile uint8_t digit_2;
 extern volatile uint8_t digit_3;
@@ -55,7 +56,7 @@ void PIN_Driver(volatile uint8_t *port, uint8_t pin, uint8_t state);
 
 void Timer_Configure(void);
 
-void setNumberToDisplay(int n);
+void setNumberToDisplay(uint16_t n);
 
 #ifdef __cplusplus
 }

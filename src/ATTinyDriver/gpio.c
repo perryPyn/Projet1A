@@ -2,7 +2,8 @@
 #include "display.h"
 #include <avr/interrupt.h>
 
-int volatile numberToDisplay = 111;
+uint16_t volatile numberToDisplay = 111;
+uint8_t  volatile decimalPoint = 3;
 uint8_t volatile digit_1=0, digit_2=0, digit_3=0;
 
 /* --- Configuration et Driver pour les pins --- */
@@ -32,16 +33,18 @@ void Timer_Configure(void) {
   sei();  // Autoriser les interruptions globales
 }
 
-void setNumberToDisplay(int n){
+void setNumberToDisplay(uint16_t n){
     numberToDisplay = n;
 }
 
 
-int i = 0;
+uint8_t i = 0;
 ISR(TIMER0_COMPA_vect) {  // Comparaison avec OCR0A
   
   DisplayOff();
+  DecimalOff();
   DrawNumber(i, digit_1, digit_2, digit_3);
+  DrawDecimalPoint(i,decimalPoint);
   i = (i + 1) % 3;
 
 }

@@ -23,5 +23,8 @@ void DisplayOff(void) {
     *  Permet d'éteindre tout les afficheur et le point décimal
   */
   PORTB &= 0xF8;
+}
+
+void DecimalOff(void){
   PORTA &= ~(1 << PA5);
 }
