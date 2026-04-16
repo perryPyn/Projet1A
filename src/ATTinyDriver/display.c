@@ -10,13 +10,21 @@ void NumberToDisplay(uint8_t numberToDisplay) {
   PORTA = (PORTA & 0xF0) | (numberToDisplay & 0x0F);
 }
 
+void DecimalToDisplay(void){
+  PORTA |= (1 << PA5);
+}
+
 void DisplayToUse(uint8_t display) {
   PORTB = (PORTB & 0xF8) | (1 << display);
 }
 
-void DisplayOff() {
+void DisplayOff(void) {
   /*
-    *  Permet d'éteindre tout les afficheur en cas de mauvaise synchronisation
+    *  Permet d'éteindre tout les afficheur et le point décimal
   */
   PORTB &= 0xF8;
+}
+
+void DecimalOff(void){
+  PORTA &= ~(1 << PA5);
 }

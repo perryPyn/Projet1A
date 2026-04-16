@@ -13,7 +13,7 @@ Schéma de configuration des pins de l'ATTiny841 :
      (DISPLAY_2)  PB1  3|             |12  PA1  (BIT_1)
          (RESET)  PB3  4|             |11  PA2  (BIT_2)
      (DISPLAY_3)  PB2  5|             |10  PA3  (BIT_3)
-        (X_SHUT)  PA7  6|             |9   PA4  (I2C_SCL)
+              ()  PA7  6|             |9   PA4  (I2C_SCL)
        (I2C_SDA)  PA6  7|             |8   PA5  (DECIMAL)
                         +-------------+
 
@@ -45,17 +45,18 @@ Schéma de configuration des pins de l'ATTiny841 :
 extern "C" {
 #endif
 
-extern volatile int numberToDisplay;
-extern volatile uint8_t digit_unites;
-extern volatile uint8_t digit_dizaines;
-extern volatile uint8_t digit_centaines;
+extern volatile uint16_t numberToDisplay;
+extern volatile uint8_t decimalPoint;
+extern volatile uint8_t digit_1;
+extern volatile uint8_t digit_2;
+extern volatile uint8_t digit_3;
 
 void PIN_Configure(void);
 void PIN_Driver(volatile uint8_t *port, uint8_t pin, uint8_t state);
 
 void Timer_Configure(void);
 
-void setNumberToDisplay(int n);
+void setNumberToDisplay(uint16_t n);
 
 #ifdef __cplusplus
 }

@@ -66,6 +66,5 @@ void Capteur_Read(void) {
     return;
   }
 
-  if (distance > 999) distance = 999;  // Distance tronquée le temps d'ajouter les décimales
   setNumberToDisplay((int)distance);
 }
